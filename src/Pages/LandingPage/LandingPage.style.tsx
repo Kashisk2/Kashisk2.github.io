@@ -53,7 +53,7 @@ const Style = {
   Heading: {
     color: "common.white",
 
-    fontSize: { xs: "20px", md: "48px" },
+    fontSize: { xs: "19px", md: "48px" },
     lineHeight: { xs: "30px", md: "54px" },
   },
 };
