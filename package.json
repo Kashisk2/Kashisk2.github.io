@@ -1,7 +1,7 @@
 {
   "name": "kashi-portfolo",
   "version": "0.1.0",
-  "homepage": "https://kashisk2.github.io/kashisk2.github.io/",
+  "homepage": "https://kashisk2.github.io/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.0",
