@@ -2,9 +2,14 @@ import {
   Avatar,
   Button,
   Container,
+  Divider,
+  Drawer,
   IconButton,
   Link,
+  ListItemButton,
+  ListItemText,
   Rating,
+  SwipeableDrawer,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -18,8 +23,21 @@ import NodeJs from "../../assets/NodeJs.png";
 import Humble from "../../assets/Humble.png";
 import cssLogo from "../../assets/cssLogo.png";
 import "./index.css";
-import { Call, GitHub, LinkedIn, WhatsApp } from "@mui/icons-material";
+import {
+  Call,
+  Close,
+  GitHub,
+  LinkedIn,
+  Menu,
+  WhatsApp,
+} from "@mui/icons-material";
+import { SyntheticEvent, useState } from "react";
 const LandingPage = () => {
+  const [open, setState] = useState(false);
+
+  const toggleDrawer = (open: boolean) => {
+    setState(open);
+  };
   return (
     <Box>
       <Box
@@ -47,7 +65,7 @@ const LandingPage = () => {
             </Box>
             <Box
               sx={{
-                display: "flex",
+                display: { xs: "none", md: "flex" },
                 gap: 1,
                 alignItems: "center",
               }}
@@ -76,6 +94,103 @@ const LandingPage = () => {
                 Contact
               </Button>
             </Box>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={() => toggleDrawer(true)}
+              sx={{
+                display: {
+                  xs: "block",
+                  md: "none",
+                },
+              }}
+            >
+              <Menu fontSize="large" sx={{ color: "white" }} />
+            </IconButton>
+
+            <SwipeableDrawer
+              anchor="top"
+              open={open}
+              onClose={() => toggleDrawer(false)}
+              onOpen={() => toggleDrawer(true)}
+            >
+              <Box sx={Style.DrawerBlock}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignContent: "center",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: "150px",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <img src={Logo} width="100%" />
+                  </Box>
+                  <IconButton onClick={() => toggleDrawer(false)}>
+                    <Close sx={{ color: "white", p: 2 }} />
+                  </IconButton>
+                </Box>
+
+                <Divider sx={{ mb: 2, borderColor: "white" }} />
+
+                <Box sx={{ mb: 2 }}>
+                  {/* <ListItemButton>
+                  <ListItemText
+                    primary="Pricing"
+                    onClick={(e) => {
+                      navigate(PageRoutes.PricingPage);
+                      toggleDrawer(false);
+                    }}
+                  />
+                </ListItemButton> */}
+                  <ListItemButton>
+                    <ListItemText
+                      sx={{ ...Style.NavTab, px: 0 }}
+                      primary="Home"
+                      onClick={(e) => {
+                        toggleDrawer(false);
+                      }}
+                    />
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemText
+                      sx={{ ...Style.NavTab, px: 0 }}
+                      primary="Service"
+                      onClick={() => {
+                        toggleDrawer(false);
+                      }}
+                    />
+                  </ListItemButton>
+
+                  <ListItemButton>
+                    <ListItemText
+                      sx={{ ...Style.NavTab, px: 0 }}
+                      primary="Work"
+                      onClick={() => {
+                        toggleDrawer(false);
+                      }}
+                    />
+                  </ListItemButton>
+
+                  <ListItemButton>
+                    <ListItemText
+                      sx={{ ...Style.NavTab, px: 0 }}
+                      primary="Portfolio"
+                      onClick={() => {
+                        toggleDrawer(false);
+                      }}
+                    />
+                  </ListItemButton>
+                </Box>
+              </Box>
+            </SwipeableDrawer>
           </Box>
         </Container>
       </Box>
@@ -134,10 +249,30 @@ const LandingPage = () => {
                   </Button>
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <LinkedIn sx={{ color: "#8f5de5", fontSize: "40px" }} />
-                  <GitHub sx={{ color: "#8f5de5", fontSize: "40px" }} />
-                  <WhatsApp sx={{ color: "#8f5de5", fontSize: "40px" }} />
-                  <Call sx={{ color: "#8f5de5", fontSize: "40px" }} />
+                  <LinkedIn
+                    sx={{
+                      color: "#8f5de5",
+                      fontSize: { xs: "26px", md: "40px" },
+                    }}
+                  />
+                  <GitHub
+                    sx={{
+                      color: "#8f5de5",
+                      fontSize: { xs: "26px", md: "40px" },
+                    }}
+                  />
+                  <WhatsApp
+                    sx={{
+                      color: "#8f5de5",
+                      fontSize: { xs: "26px", md: "40px" },
+                    }}
+                  />
+                  <Call
+                    sx={{
+                      color: "#8f5de5",
+                      fontSize: { xs: "26px", md: "40px" },
+                    }}
+                  />
                 </Box>
               </Box>
             </Box>
@@ -211,7 +346,7 @@ const LandingPage = () => {
                     sx={{
                       color: "common.grey",
                       mt: 1,
-                      fontSize: { sx: "14px", md: "16px" },
+                      fontSize: { xs: "14px", md: "16px" },
                     }}
                   >
                     MERN Developer (Frontend and Backend)
@@ -326,7 +461,8 @@ const LandingPage = () => {
               sx={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-                gridGap: "16px",
+                columnGap: 3,
+                rowGap: 4,
                 px: 1,
                 width: 1,
               }}
@@ -344,7 +480,6 @@ const LandingPage = () => {
               <Box className="my-div">
                 <img src={Html} alt="" />
                 <Typography
-                
                   variant="body1"
                   sx={{ fontWeight: 600, color: "common.grey" }}
                 >

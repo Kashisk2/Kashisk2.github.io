@@ -19,6 +19,11 @@ const Style = {
 
     ":hover:after": { transform: " scaleX(1)" },
   },
+  DrawerBlock: {
+    p: 2,
+    bgcolor: "common.black",
+    height: 1,
+  },
   UnderlineEffect: {
     borderBottom: "1px solid transparent",
 
