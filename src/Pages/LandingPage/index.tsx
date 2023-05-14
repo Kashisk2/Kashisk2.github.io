@@ -150,7 +150,7 @@ const LandingPage = () => {
                     }}
                   />
                 </ListItemButton> */}
-                  <ListItemButton>
+                  <ListItemButton sx={{ p: 0, textAlign: "center" }}>
                     <ListItemText
                       sx={{ ...Style.NavTab, px: 0 }}
                       primary="Home"
@@ -159,7 +159,7 @@ const LandingPage = () => {
                       }}
                     />
                   </ListItemButton>
-                  <ListItemButton>
+                  <ListItemButton sx={{ p: 0, textAlign: "center" }}>
                     <ListItemText
                       sx={{ ...Style.NavTab, px: 0 }}
                       primary="Service"
@@ -169,7 +169,7 @@ const LandingPage = () => {
                     />
                   </ListItemButton>
 
-                  <ListItemButton>
+                  <ListItemButton sx={{ p: 0, textAlign: "center" }}>
                     <ListItemText
                       sx={{ ...Style.NavTab, px: 0 }}
                       primary="Work"
@@ -179,10 +179,19 @@ const LandingPage = () => {
                     />
                   </ListItemButton>
 
-                  <ListItemButton>
+                  <ListItemButton sx={{ p: 0, textAlign: "center" }}>
                     <ListItemText
                       sx={{ ...Style.NavTab, px: 0 }}
                       primary="Portfolio"
+                      onClick={() => {
+                        toggleDrawer(false);
+                      }}
+                    />
+                  </ListItemButton>
+                  <ListItemButton sx={{ p: 0, textAlign: "center" }}>
+                    <ListItemText
+                      sx={{ ...Style.NavTab, px: 0 }}
+                      primary="Contact"
                       onClick={() => {
                         toggleDrawer(false);
                       }}
